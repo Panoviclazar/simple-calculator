@@ -1,0 +1,112 @@
+:root {
+  --main-color: #f5f5f5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--main-color);
+}
+
+.calc-container {
+  width: 250px;
+  position: relative;
+  top: 80px;
+  margin-inline: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+.calc-container .calc-screen {
+  cursor: default;
+  border-radius: 20px;
+  width: 100%;
+  height: 200px;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 35px;
+  padding: 20px;
+  text-align: right;
+  font-weight: 100;
+}
+.calc-container .buttons-container {
+  padding: 5px;
+  width: 100%;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.calc-container .buttons-container .buttons {
+  cursor: pointer;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  display: grid;
+  place-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--main-color);
+}
+.calc-container .buttons-container .buttons:nth-child(2), .calc-container .buttons-container .buttons:nth-child(3), .calc-container .buttons-container .buttons:nth-child(7), .calc-container .buttons-container .buttons:nth-child(11) {
+  color: #38b000;
+  font-size: 15px;
+}
+.calc-container .buttons-container .buttons:nth-child(1) {
+  color: red;
+  grid-column: span 2;
+  width: 110px;
+  border-radius: 30px;
+}
+.calc-container .buttons-container .buttons:nth-child(11) {
+  grid-row: span 2;
+  height: 110px;
+  border-radius: 30px;
+  font-size: 30px;
+}
+.calc-container .buttons-container .buttons:nth-child(15) {
+  grid-column: span 2;
+  width: 110px;
+  border-radius: 30px;
+}
+.calc-container .buttons-container .buttons:nth-child(17) {
+  background-color: #38b000;
+  color: white;
+  font-size: 15px;
+}
+
+@media (max-width: 450px) {
+  .calc-container {
+    border-radius: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+  }
+  .calc-container .calc-screen {
+    height: 40%;
+    font-size: 50px;
+  }
+  .calc-container .buttons-container {
+    height: 60%;
+    gap: 1px;
+  }
+  .calc-container .buttons-container .buttons {
+    width: 70px;
+    height: 70px;
+  }
+  .calc-container .buttons-container .buttons:nth-child(1) {
+    width: 160px;
+  }
+  .calc-container .buttons-container .buttons:nth-child(11) {
+    height: 150px;
+  }
+  .calc-container .buttons-container .buttons:nth-child(15) {
+    width: 160px;
+  }
+}/*# sourceMappingURL=style.css.map */

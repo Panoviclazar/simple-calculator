@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calc-container">
+    <textarea readonly maxlength="30" style="resize: none" class="calc-screen" id="" cols="10" rows="3"></textarea>
+    <div class="buttons-container">
+      <div class="buttons clear">CLEAR</div>
+      <div class="buttons button" data-value="/"><i class="fas fa-divide" data-value="/"></i></i></div>
+      <div class="buttons button" data-value="*"><i class="fa-solid fa-xmark" data-value="*"></i></div>
+      <div class="buttons button" data-value="7">7</div>
+      <div class="buttons button" data-value="8">8</div>
+      <div class="buttons button" data-value="9">9</div>
+      <div class="buttons button" data-value="-"><i class="fas fa-minus" data-value="-"></i></div>
+      <div class="buttons button" data-value="4">4</div>
+      <div class="buttons button" data-value="5">5</div>
+      <div class="buttons button" data-value="6">6</div>
+      <div class="buttons button" data-value="+">+</div>
+      <div class="buttons button" data-value="1">1</div>
+      <div class="buttons button" data-value="2">2</div>
+      <div class="buttons button" data-value="3">3</div>
+      <div class="buttons button" data-value="0">0</div>
+      <div class="buttons button" data-value=".">,</div>
+      <div class="buttons equal"><i class="fas fa-equals"></i></div>
+    </div>
+  </div>
+
+  <script defer>
+    const input = document.querySelector('.calc-screen');
+    const buttons = document.querySelectorAll('.buttons');
+    const buttonsCont = document.querySelector('.buttons-container');
+    const clear = document.querySelector('.clear')
+    const equal = document.querySelector('.equal')
+
+    buttonsCont.addEventListener('click', function(e){
+      if([...input.value].length <= 25){
+        if(e.target.closest('.button')){
+        input.value += e.target.getAttribute('data-value')
+      }
+      }
+    })
+
+    clear.addEventListener('click', () => {
+      input.value = '';
+    })
+
+    equal.addEventListener('click', () => {
+      if(input.value){
+        input.value = eval(input.value)
+      } else {
+        input.value = 0
+      }
+    })
+  </script>
+</body>
+</html>
