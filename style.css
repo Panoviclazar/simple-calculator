@@ -9,7 +9,7 @@
 }
 
 body {
-  background: var(--main-color);
+  background-color: var(--main-color);
 }
 
 .calc-container {
@@ -52,7 +52,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--main-color);
+  background-color: var(--main-color);
 }
 .calc-container .buttons-container .buttons:nth-child(2), .calc-container .buttons-container .buttons:nth-child(3), .calc-container .buttons-container .buttons:nth-child(7), .calc-container .buttons-container .buttons:nth-child(11) {
   color: #38b000;
@@ -79,6 +79,13 @@ body {
   background-color: #38b000;
   color: white;
   font-size: 15px;
+}
+.calc-container .buttons-container .buttons:nth-child(17):active {
+  background-color: #38b000;
+}
+.calc-container .buttons-container .buttons:active {
+  scale: 0.9;
+  background-color: #ffffff;
 }
 
 @media (max-width: 450px) {
