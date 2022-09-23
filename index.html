@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="calc-container">
-    <textarea readonly maxlength="30" style="resize: none" class="calc-screen" id="" cols="10" rows="3"></textarea>
-    <div class="buttons-container">
-      <div class="buttons clear">CLEAR</div>
-      <div class="buttons button" data-value="/"><i class="fas fa-divide" data-value="/"></i></i></div>
-      <div class="buttons button" data-value="*"><i class="fa-solid fa-xmark" data-value="*"></i></div>
-      <div class="buttons button" data-value="7">7</div>
-      <div class="buttons button" data-value="8">8</div>
-      <div class="buttons button" data-value="9">9</div>
-      <div class="buttons button" data-value="-"><i class="fas fa-minus" data-value="-"></i></div>
-      <div class="buttons button" data-value="4">4</div>
-      <div class="buttons button" data-value="5">5</div>
-      <div class="buttons button" data-value="6">6</div>
-      <div class="buttons button" data-value="+">+</div>
-      <div class="buttons button" data-value="1">1</div>
-      <div class="buttons button" data-value="2">2</div>
-      <div class="buttons button" data-value="3">3</div>
-      <div class="buttons button" data-value="0">0</div>
-      <div class="buttons button" data-value=".">,</div>
-      <div class="buttons equal"><i class="fas fa-equals"></i></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="calc-cont">
+      <textarea class="input" cols="30" rows="10" readonly></textarea>
+      <div class="buttons-cont">
+        <buttons class="clear">CLEAR</buttons>
+        <buttons class="button" data-value="*">*</buttons>
+        <buttons class="button" data-value="/">&divide</buttons>
+        <buttons class="button" data-value="7">7</buttons>
+        <buttons class="button" data-value="8">8</buttons>
+        <buttons class="button" data-value="9">9</buttons>
+        <buttons class="button" data-value="-">-</buttons>
+        <buttons class="button" data-value="4">4</buttons>
+        <buttons class="button" data-value="5">5</buttons>
+        <buttons class="button" data-value="6">6</buttons>
+        <buttons class="button" data-value="+">+</buttons>
+        <buttons class="button" data-value="1">1</buttons>
+        <buttons class="button" data-value="2">2</buttons>
+        <buttons class="button" data-value="3">3</buttons>
+        <buttons class="button" data-value="0">0</buttons>
+        <buttons class="button" data-value=".">,</buttons>
+        <buttons class="equal">=</buttons>
+      </div>
     </div>
-  </div>
 
-  <script defer>
-    const input = document.querySelector('.calc-screen');
-    const buttons = document.querySelectorAll('.buttons');
-    const buttonsCont = document.querySelector('.buttons-container');
-    const clear = document.querySelector('.clear')
-    const equal = document.querySelector('.equal')
+    <script>
+      const buttonsCont = document.querySelector(".buttons-cont");
+      const input = document.querySelector(".input");
+      const clear = document.querySelector(".clear");
+      const equal = document.querySelector(".equal");
+      let value = true;
 
-    buttonsCont.addEventListener('click', function(e){
-      if([...input.value].length <= 25){
-        if(e.target.closest('.button')){
-        input.value += e.target.getAttribute('data-value')
-      }
-      }
-    })
+      buttonsCont.addEventListener("click", function (e) {
+        if (
+          e.target.classList.contains("button") &&
+          value &&
+          [...input.value].length < 20
+        ) {
+          input.value += e.target.getAttribute("data-value");
+          value = false;
+          setTimeout(function () {
+            value = true;
+          }, 30);
+        }
+      });
 
-    clear.addEventListener('click', () => {
-      input.value = '';
-    })
+      clear.addEventListener("click", () => {
+        input.value = "";
+      });
 
-    equal.addEventListener('click', () => {
-      if(input.value){
-        input.value = eval(input.value)
-      } else {
-        input.value = 0
-      }
-    })
-  </script>
-</body>
+      equal.addEventListener("click", () => {
+        if (input.value) {
+          input.value = eval(input.value);
+        }
+      });
+    </script>
+  </body>
 </html>
